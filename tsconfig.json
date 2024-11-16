@@ -1,0 +1,23 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "bundler",
+		"types": ["svelte", "vite/client"] // Add type definitions for Svelte and Vite
+	},
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.ts",
+		"src/**/*.js",
+		"src/**/*.svelte",
+		"node_modules/flowbite-svelte/**/*" // Include Flowbite-Svelte types
+	],
+	"exclude": ["node_modules", ".svelte-kit", "build"]
+}
