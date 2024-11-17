@@ -14,6 +14,7 @@
 	import _ from 'lodash';
 	import { onMount } from 'svelte';
 	import Chart from '../components/landing-pad/Chart.svelte';
+	import DataGrid from '../components/landing-pad/DataGrid.svelte';
 	import MapView from '../components/landing-pad/MapView.svelte';
 	import type { DataObjType, LandingPadObjType } from '../config/types';
 	let isList = true;
@@ -89,13 +90,13 @@
 					<ButtonGroup>
 						<Button
 							outline
-							class="rounded-none border-gray-200 bg-gray-200 first:rounded-l-lg last:rounded-r-lg hover:bg-gray-200"
+							class={`rounded-none border-gray-200 first:rounded-l-lg last:rounded-r-lg ${isList ? 'bg-gray-200 text-blue-600' : 'text-black'} hover:bg-gray-200 hover:text-blue-600`}
 							on:click={() => (isList = true)}
 							><ListOutline />
 						</Button>
 						<Button
 							outline
-							class="rounded-none border-l-0 border-gray-200 first:rounded-l-lg  last:rounded-r-lg hover:bg-gray-200"
+							class={`rounded-none border-gray-200 first:rounded-l-lg last:rounded-r-lg ${isList ? 'text-black' : 'bg-gray-200 text-blue-600'} hover:bg-gray-200 hover:text-blue-600`}
 							on:click={() => (isList = false)}
 							><GridOutline />
 						</Button>
@@ -124,7 +125,7 @@
 				{#if isList}
 					<DataTableList data={filteredData} />
 				{:else}
-					<p>Grid</p>
+					<DataGrid />
 				{/if}
 			</div>
 		{/if}
