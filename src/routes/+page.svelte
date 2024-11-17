@@ -76,11 +76,11 @@
 </script>
 
 <section class="min-h-screen w-full">
-	<header class="flex justify-center py-5 shadow-md">
+	<header class="flex w-full justify-center py-5 shadow-md">
 		<img src="/images/spacex-logo.png" alt="SpaceX Logo" class="h-10 w-auto" />
 	</header>
 
-	<div class="mx-auto mt-[50px] flex w-full gap-x-10 p-4">
+	<div class="mx-auto mt-[50px] flex w-full flex-col gap-x-10 p-4 md:flex-row">
 		{#if filteredData && filteredData.length > 0}
 			<div class="min-h-4 w-[1158px]">
 				<div class="filters mb-5 flex justify-between">
