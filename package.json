@@ -16,10 +16,12 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eslint": "^9.6.0",
+		"@types/lodash": "^4.17.13",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
+		"flowbite-svelte-icons": "^1.6.2",
 		"globals": "^15.0.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
@@ -32,7 +34,10 @@
 		"vite": "^5.0.3"
 	},
 	"dependencies": {
+		"axios": "^1.7.7",
 		"flowbite": "^2.5.2",
-		"flowbite-svelte": "^0.47.3"
+		"flowbite-svelte": "^0.47.3",
+		"lodash": "^4.17.21",
+		"tailwind-merge": "^2.5.4"
 	}
 }
