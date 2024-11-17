@@ -13,6 +13,8 @@
 	import { Dropdown, DropdownItem } from 'flowbite-svelte';
 	import _ from 'lodash';
 	import { onMount } from 'svelte';
+	import Chart from '../components/landing-pad/Chart.svelte';
+	import MapView from '../components/landing-pad/MapView.svelte';
 	import type { DataObjType, LandingPadObjType } from '../config/types';
 
 	let isDropdownOpen = false;
@@ -78,8 +80,8 @@
 		<img src="/images/spacex-logo.png" alt="SpaceX Logo" class="h-10 w-auto" />
 	</header>
 
-	{#if filteredData && filteredData.length > 0}
-		<div class="mx-auto w-full p-4">
+	<div class="mx-auto mt-[50px] flex w-full gap-x-10 p-4">
+		{#if filteredData && filteredData.length > 0}
 			<div class="min-h-4 w-[1158px]">
 				<div class="filters mb-5 flex justify-between">
 					<ButtonGroup>
@@ -117,6 +119,12 @@
 				</div>
 				<DataTableList data={filteredData} />
 			</div>
-		</div>
-	{/if}
+		{/if}
+		{#if landingPads.data && landingPads.data.length > 0}
+			<div class="flex w-[521px] flex-col gap-y-10">
+				<MapView data={landingPads.data} />
+				<Chart data={landingPads.data} />
+			</div>
+		{/if}
+	</div>
 </section>

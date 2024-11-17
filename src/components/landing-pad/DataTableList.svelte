@@ -13,6 +13,7 @@
 	import { makeNum } from '../../utils/numberFuncs';
 	import Status from '../shared/Status.svelte';
 	import SuccessRate from '../shared/SuccessRate.svelte';
+	export let data: DataObjType[] = [];
 	// You can dynamically map the color to a Tailwind class
 	const getColorByStatus = (status: string) => {
 		console.log('status', status);
@@ -42,8 +43,6 @@
 			return 'bg-red-400';
 		}
 	};
-
-	export let data: DataObjType[] = [];
 </script>
 
 <Table>
