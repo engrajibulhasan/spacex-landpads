@@ -16,7 +16,7 @@
 	import Chart from '../components/landing-pad/Chart.svelte';
 	import MapView from '../components/landing-pad/MapView.svelte';
 	import type { DataObjType, LandingPadObjType } from '../config/types';
-
+	let isList = true;
 	let isDropdownOpen = false;
 	let filter = 'all';
 	const STATUS = ['all', 'active', 'retired', 'under construction'];
@@ -72,7 +72,7 @@
 	onMount(() => {
 		fetchLandingPads();
 	});
-	console.log('isDropdownOpen', isDropdownOpen);
+	console.log('isList', isList);
 </script>
 
 <section class="min-h-screen w-full">
@@ -87,14 +87,16 @@
 					<ButtonGroup>
 						<Button
 							outline
-							class="rounded-none border-gray-200 bg-gray-200 first:rounded-l-lg last:rounded-r-lg"
+							class="rounded-none border-gray-200 bg-gray-200 first:rounded-l-lg last:rounded-r-lg hover:bg-gray-200"
+							on:click={() => (isList = true)}
 							><ListOutline />
 						</Button>
 						<Button
 							outline
-							class="rounded-none border-l-0 border-gray-200 first:rounded-l-lg  last:rounded-r-lg"
-							><GridOutline /></Button
-						>
+							class="rounded-none border-l-0 border-gray-200 first:rounded-l-lg  last:rounded-r-lg hover:bg-gray-200"
+							on:click={() => (isList = false)}
+							><GridOutline />
+						</Button>
 					</ButtonGroup>
 
 					<div>
@@ -117,7 +119,11 @@
 						</Dropdown>
 					</div>
 				</div>
-				<DataTableList data={filteredData} />
+				{#if isList}
+					<DataTableList data={filteredData} />
+				{:else}
+					<p>Grid</p>
+				{/if}
 			</div>
 		{/if}
 		{#if landingPads.data && landingPads.data.length > 0}

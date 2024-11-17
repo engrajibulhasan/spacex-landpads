@@ -2,17 +2,17 @@
 	import type { ApexOptions } from 'apexcharts';
 	import { Card, Chart } from 'flowbite-svelte';
 	import type { DataObjType } from '../../config/types';
-	export let data: DataObjType[] = [];
 
-	let attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
-	let success = data.reduce((total, pad) => total + pad.successful_landings, 0);
-	let failed = attempt - success;
-	console.log('Success total', success);
-	console.log('failed total', failed);
+	export let data: DataObjType[] = [];
+	const attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
+	const success = data.reduce((total, pad) => total + pad.successful_landings, 0);
+	const failed = attempt - success;
+	const fontFamily = 'Inter, sans-serif';
 
 	const options: ApexOptions = {
 		series: [attempt, success, failed],
 		colors: ['#3b82f6', '#4ade80', '#ec4899'],
+		labels: ['Attempt', 'Success', 'Failed'],
 		chart: {
 			height: 320,
 			width: '100%',
@@ -29,17 +29,15 @@
 						show: true,
 						name: {
 							show: true,
-							fontFamily: 'Inter, sans-serif',
+							fontFamily,
 							offsetY: 20
 						},
 						total: {
 							showAlways: true,
 							show: true,
 							label: 'Landing Pads',
-							fontFamily: 'Inter, sans-serif',
-							formatter: function (w) {
-								return `${data.length}`;
-							}
+							fontFamily,
+							formatter: () => `${data.length}`
 						},
 						value: {
 							show: true,
@@ -56,20 +54,17 @@
 				top: -2
 			}
 		},
-		labels: ['Attempt', 'Success', 'Failed'],
+
 		dataLabels: {
 			enabled: false
 		},
 		legend: {
 			position: 'bottom',
-			fontFamily: 'Inter, sans-serif'
+			fontFamily
 		},
-
 		xaxis: {
 			labels: {
-				formatter: function (value: string) {
-					return value;
-				}
+				formatter: (value: string) => value
 			}
 		}
 	};
