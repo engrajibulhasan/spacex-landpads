@@ -70,7 +70,7 @@
 	};
 </script>
 
-<Card class="w-full max-w-[521px] p-0">
+<Card class="w-full max-w-full p-0">
 	<h3 class="m-0 p-4 text-[16px] text-black">Success Rate Chart</h3>
 	<Chart {options} class="py-6" />
 </Card>

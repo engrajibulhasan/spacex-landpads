@@ -86,7 +86,7 @@
 	});
 </script>
 
-<Card class="w-full max-w-[521px] p-0">
+<Card class="w-full max-w-full p-0">
 	<h3 class="m-0 p-4 text-[16px] text-black">Map View</h3>
 	<div id="map" class=" h-[355px] w-full rounded bg-slate-400"></div>
 </Card>
