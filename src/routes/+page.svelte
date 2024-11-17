@@ -76,13 +76,15 @@
 </script>
 
 <section class="min-h-screen w-full">
-	<header class="flex justify-center py-5 shadow-md">
+	<header class="flex w-full justify-center py-5 shadow-md">
 		<img src="/images/spacex-logo.png" alt="SpaceX Logo" class="h-10 w-auto" />
 	</header>
 
-	<div class="mx-auto mt-[50px] flex w-full gap-x-10 p-4">
+	<div
+		class="mx-auto mt-[50px] grid grid-cols-1 gap-y-10 p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-0"
+	>
 		{#if filteredData && filteredData.length > 0}
-			<div class="min-h-4 w-[1158px]">
+			<div class="col-span-6 min-h-4 md:col-span-7 lg:col-span-9">
 				<div class="filters mb-5 flex justify-between">
 					<ButtonGroup>
 						<Button
@@ -127,7 +129,7 @@
 			</div>
 		{/if}
 		{#if landingPads.data && landingPads.data.length > 0}
-			<div class="flex w-[521px] flex-col gap-y-10">
+			<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
 				<MapView data={landingPads.data} />
 				<Chart data={landingPads.data} />
 			</div>
