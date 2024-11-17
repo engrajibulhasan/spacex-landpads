@@ -13,8 +13,10 @@
 	import { Dropdown, DropdownItem } from 'flowbite-svelte';
 	import _ from 'lodash';
 	import { onMount } from 'svelte';
+	import Chart from '../components/landing-pad/Chart.svelte';
+	import MapView from '../components/landing-pad/MapView.svelte';
 	import type { DataObjType, LandingPadObjType } from '../config/types';
-
+	let isList = true;
 	let isDropdownOpen = false;
 	let filter = 'all';
 	const STATUS = ['all', 'active', 'retired', 'under construction'];
@@ -70,7 +72,7 @@
 	onMount(() => {
 		fetchLandingPads();
 	});
-	console.log('isDropdownOpen', isDropdownOpen);
+	console.log('isList', isList);
 </script>
 
 <section class="min-h-screen w-full">
@@ -78,21 +80,23 @@
 		<img src="/images/spacex-logo.png" alt="SpaceX Logo" class="h-10 w-auto" />
 	</header>
 
-	{#if filteredData && filteredData.length > 0}
-		<div class="mx-auto w-full p-4">
+	<div class="mx-auto mt-[50px] flex w-full gap-x-10 p-4">
+		{#if filteredData && filteredData.length > 0}
 			<div class="min-h-4 w-[1158px]">
 				<div class="filters mb-5 flex justify-between">
 					<ButtonGroup>
 						<Button
 							outline
-							class="rounded-none border-gray-200 bg-gray-200 first:rounded-l-lg last:rounded-r-lg"
+							class="rounded-none border-gray-200 bg-gray-200 first:rounded-l-lg last:rounded-r-lg hover:bg-gray-200"
+							on:click={() => (isList = true)}
 							><ListOutline />
 						</Button>
 						<Button
 							outline
-							class="rounded-none border-l-0 border-gray-200 first:rounded-l-lg  last:rounded-r-lg"
-							><GridOutline /></Button
-						>
+							class="rounded-none border-l-0 border-gray-200 first:rounded-l-lg  last:rounded-r-lg hover:bg-gray-200"
+							on:click={() => (isList = false)}
+							><GridOutline />
+						</Button>
 					</ButtonGroup>
 
 					<div>
@@ -115,8 +119,18 @@
 						</Dropdown>
 					</div>
 				</div>
-				<DataTableList data={filteredData} />
+				{#if isList}
+					<DataTableList data={filteredData} />
+				{:else}
+					<p>Grid</p>
+				{/if}
 			</div>
-		</div>
-	{/if}
+		{/if}
+		{#if landingPads.data && landingPads.data.length > 0}
+			<div class="flex w-[521px] flex-col gap-y-10">
+				<MapView data={landingPads.data} />
+				<Chart data={landingPads.data} />
+			</div>
+		{/if}
+	</div>
 </section>

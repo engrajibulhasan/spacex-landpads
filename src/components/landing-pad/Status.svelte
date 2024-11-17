@@ -1,18 +1,12 @@
 <script lang="ts">
-	export let status: string = ''; // Default status
+	export let status: string = '';
 
-	// You can dynamically map the color to a Tailwind class
 	const getColorClass = (status: string) => {
-		console.log('status', status);
-
-		// Define the color classes manually
 		switch (status.toLowerCase()) {
 			case 'active':
 				return 'bg-green-100 text-green-800';
-
 			case 'retired':
 				return 'bg-red-200 text-red-800';
-
 			case 'under construction':
 				return 'bg-blue-100 text-blue-800';
 			default:
