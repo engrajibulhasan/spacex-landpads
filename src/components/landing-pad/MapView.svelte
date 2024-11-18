@@ -29,11 +29,9 @@
 		map = new Map({
 			target: 'map',
 			layers: [
-				// Base map layer
 				new TileLayer({
 					source: new OSM()
 				}),
-				// Landing zones layer
 				vectorLayer
 			],
 			view: new View({

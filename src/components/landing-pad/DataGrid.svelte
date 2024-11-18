@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type { DataObjType } from '../../config/types';
-
 	import LandpadsGridCards from '../shared/cards/LandpadsGridCards.svelte';
 	export let data: DataObjType[] = [];
-	let hCard = false;
 </script>
 
 <scrip lang="ts"> </scrip>

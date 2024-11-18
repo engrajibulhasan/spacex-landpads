@@ -17,7 +17,7 @@
 		}
 	};
 
-	// Function to get the icon component based on status
+	// Gebnerating Icons
 	const getIcon = (status: string) => {
 		switch (status.toLowerCase()) {
 			case 'active':
@@ -27,7 +27,7 @@
 			case 'under construction':
 				return HammerSolid;
 			default:
-				return HammerSolid; // Default icon
+				return HammerSolid;
 		}
 	};
 

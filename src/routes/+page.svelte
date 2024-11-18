@@ -78,6 +78,7 @@
 				filteredData = _.cloneDeep(data.filter((item) => item.status === filter));
 			}
 		}
+		isDropdownOpen = false;
 	};
 
 	onMount(() => {
@@ -121,11 +122,11 @@
 					</ButtonGroup>
 
 					<div>
-						<Button color="light" class={`${isDropdownOpen ? 'text-blue-500' : 'text-gray-700'}`}
-							><AdjustmentsVerticalOutline class="mr-1" /> Filter By Status <ChevronDownOutline
-								class="ms-1 "
-							/></Button
-						>
+						<Button color="light" class={`${isDropdownOpen ? 'text-blue-500' : 'text-gray-700'}`}>
+							<AdjustmentsVerticalOutline class="mr-1" />
+							Filter By Status {filter != 'all' ? `(${filter})` : ''}
+							<ChevronDownOutline class="ms-1 " />
+						</Button>
 						<Dropdown bind:open={isDropdownOpen}>
 							{#each STATUS as item}
 								<DropdownItem class="capitalize"
@@ -151,12 +152,11 @@
 				{/if}
 			</div>
 
-			{#if landingPads.data && landingPads.data.length > 0}
+			{#if filteredData && filteredData.length > 0}
 				<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
-					{#if filteredData && filteredData.length > 0}
-						<MapView data={filteredData} />
-					{/if}
-					<Chart data={landingPads.data} />
+					<MapView data={filteredData} />
+
+					<Chart data={filteredData} />
 				</div>
 			{/if}
 		</div>

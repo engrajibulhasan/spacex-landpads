@@ -4,14 +4,20 @@
 	import type { DataObjType } from '../../config/types';
 
 	export let data: DataObjType[] = [];
-	const attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
-	const success = data.reduce((total, pad) => total + pad.successful_landings, 0);
-	const failed = attempt - success;
-	const fontFamily = 'Inter, sans-serif';
 
-	data.map((item) => console.log(item.attempted_landings));
+	// Type Config
+	let attempt: number;
+	let success: number;
+	let failed: number;
+	let options: ApexOptions;
 
-	const options: ApexOptions = {
+	// Reactivness
+	$: attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
+	$: success = data.reduce((total, pad) => total + pad.successful_landings, 0);
+	$: failed = attempt - success;
+
+	// Reactive update of chart options
+	$: options = {
 		series: [attempt, success, failed],
 		colors: ['#3b82f6', '#4ade80', '#ec4899'],
 		labels: ['Attempt', 'Success', 'Failed'],
@@ -31,14 +37,14 @@
 						show: true,
 						name: {
 							show: true,
-							fontFamily,
+							fontFamily: 'Inter, sans-serif',
 							offsetY: 20
 						},
 						total: {
 							showAlways: true,
 							show: true,
 							label: 'Landing Pads',
-							fontFamily,
+							fontFamily: 'Inter, sans-serif',
 							formatter: () => `${data.length}`
 						},
 						value: {
@@ -56,13 +62,12 @@
 				top: -2
 			}
 		},
-
 		dataLabels: {
 			enabled: false
 		},
 		legend: {
 			position: 'bottom',
-			fontFamily
+			fontFamily: 'Inter, sans-serif'
 		},
 		xaxis: {
 			labels: {
