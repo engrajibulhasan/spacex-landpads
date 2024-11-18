@@ -44,7 +44,7 @@
 
 		filteredData = null;
 		try {
-			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v3/landpads');
+			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v4/landpads');
 			const theData = response?.data ? response.data : null;
 			landingPads = {
 				...landingPads,
@@ -102,7 +102,7 @@
 		<ErrorMessage message={landingPads.message} />
 
 		<!-- If !Loading and Data -->
-	{:else if !landingPads.isLoading && !landingPads.isError && filteredData && filteredData.length > 0}
+	{:else if !landingPads.isLoading && !landingPads.isError && filteredData}
 		<div
 			class="mx-auto mt-[50px] grid grid-cols-1 gap-y-10 p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-0"
 		>
@@ -143,10 +143,14 @@
 						</Dropdown>
 					</div>
 				</div>
-				{#if isList}
-					<DataTableList data={filteredData} />
+				{#if filteredData.length > 0}
+					{#if isList}
+						<DataTableList data={filteredData} />
+					{:else}
+						<DataGrid data={filteredData} />
+					{/if}
 				{:else}
-					<DataGrid />
+					<ErrorMessage message={`No ${filter != 'all' && filter} Data Found!`} />
 				{/if}
 			</div>
 
@@ -157,7 +161,5 @@
 				</div>
 			{/if}
 		</div>
-	{:else}
-		<ErrorMessage message="No Data Found!" />
 	{/if}
 </section>
