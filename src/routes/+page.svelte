@@ -129,7 +129,7 @@
 							class={`capitalize ${isDropdownOpen ? 'text-blue-500' : 'text-gray-700'}`}
 						>
 							<AdjustmentsVerticalOutline class="mr-1" />
-							Filter By Status {filter != 'all' ? `(${filter})` : ''}
+							Filter By Status
 							<ChevronDownOutline class="ms-1 " />
 						</Button>
 						<Dropdown bind:open={isDropdownOpen}>
