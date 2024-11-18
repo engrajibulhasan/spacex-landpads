@@ -1,21 +1,17 @@
 export type DataObjType = {
 	id: string;
-	images: {
-		large: string[];
-	};
-	landing_attempts: number;
-	name: string;
+	attempted_landings: number;
 	full_name: string;
-	locality: string;
 	details: string;
 	landing_type: string;
-	latitude: number;
-	longitude: number;
-	region: string;
-	rockets: string[];
-	timezone: string;
+	location: {
+		name: string;
+		latitude: number;
+		longitude: number;
+		region: string;
+	};
 	status: string;
-	landing_successes: number;
+	successful_landings: number;
 	wikipedia: string;
 };
 export type LandingPadObjType = {

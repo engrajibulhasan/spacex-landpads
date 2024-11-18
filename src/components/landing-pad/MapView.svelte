@@ -17,8 +17,8 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	export let data: DataObjType[] = [];
-	const centerLat = data[0].latitude;
-	const centerLon = data[0].longitude;
+	const centerLat = data[0].location.latitude;
+	const centerLon = data[0].location.longitude;
 	let map: Map;
 
 	onMount(() => {
@@ -26,8 +26,8 @@
 		const vectorSource = new VectorSource({
 			features: data.map((zone) => {
 				const feature = new Feature({
-					geometry: new Point(fromLonLat([zone.longitude, zone.latitude])),
-					name: zone.name,
+					geometry: new Point(fromLonLat([zone.location.longitude, zone.location.latitude])),
+					name: zone.location.name,
 					type: zone.landing_type,
 					status: zone.status
 				});

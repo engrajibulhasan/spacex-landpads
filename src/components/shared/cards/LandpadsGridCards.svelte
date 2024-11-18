@@ -18,22 +18,15 @@
 </script>
 
 <div>
-	<Card
-		img={data.images.large[0]}
-		href="/"
-		horizontal
-		size="none"
-		reverse={false}
-		imgClass="w-full md:w-1/3"
-	>
+	<Card>
 		<h5 class=" flex items-center justify-between text-lg font-bold tracking-tight text-gray-900">
 			{data.full_name}
 			<Status status={data.status} />
 		</h5>
-		<h6 class="text-xs font-bold text-gray-700">{data.locality}, {data.region}</h6>
+		<h6 class="text-xs font-bold text-gray-700">{data.location.name}, {data.location.region}</h6>
 		<div class="mb-8 mt-2 leading-7">
 			<SuccessRate
-				progress={makeNum((data.landing_successes / data.landing_attempts) * 100)}
+				progress={makeNum((data.successful_landings / data.attempted_landings) * 100)}
 				text="Success Rate"
 			/>
 		</div>

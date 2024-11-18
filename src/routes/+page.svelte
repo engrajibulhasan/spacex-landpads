@@ -44,7 +44,7 @@
 
 		filteredData = null;
 		try {
-			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v4/landpads');
+			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v3/landpads');
 			const theData = response?.data ? response.data : null;
 			landingPads = {
 				...landingPads,
@@ -156,7 +156,9 @@
 
 			{#if landingPads.data && landingPads.data.length > 0}
 				<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
-					<MapView data={landingPads.data} />
+					{#if filteredData && filteredData.length > 0}
+						<MapView data={filteredData} />
+					{/if}
 					<Chart data={landingPads.data} />
 				</div>
 			{/if}

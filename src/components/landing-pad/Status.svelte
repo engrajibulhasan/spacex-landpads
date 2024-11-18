@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let status: string = '';
+	export let size: string = 'sm';
 
 	const getColorClass = (status: string) => {
 		switch (status.toLowerCase()) {
