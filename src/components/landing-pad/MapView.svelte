@@ -17,12 +17,8 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	export let data: DataObjType[] = [];
-
 	const centerLat = data[0].location.latitude;
 	const centerLon = data[0].location.longitude;
-
-	console.log('Lat Lon', centerLat, centerLon);
-
 	let map: Map;
 
 	onMount(() => {
