@@ -20,8 +20,6 @@
 	let isModalOpen = false;
 	let modalData: DataObjType | null = null;
 	const openModal = (clickedData: DataObjType) => {
-		console.log('clicked on ', clickedData);
-
 		isModalOpen = true;
 		modalData = clickedData;
 	};

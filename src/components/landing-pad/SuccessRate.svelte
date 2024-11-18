@@ -13,7 +13,7 @@
 	};
 
 	$: colorClass = getColorClass(progress);
-	const spanClass = 'text-xs text-gray-500';
+	const spanClass = 'text-xs text-gray-500 inline-block ';
 </script>
 
 {#if progress > 0}
