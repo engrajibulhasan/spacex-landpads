@@ -44,7 +44,7 @@
 
 		filteredData = null;
 		try {
-			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v4/landpads');
+			const response: AxiosResponse = await axios.get('https://api.spacexdata.com/v3/landpads');
 			const theData = response?.data ? response.data : null;
 			landingPads = {
 				...landingPads,
@@ -71,11 +71,9 @@
 	// Function to filter data based on selected status
 	const filterDataFunc = () => {
 		const { data } = landingPads;
-		console.log('filter', filter);
-
 		if (data) {
 			if (filter === 'all') {
-				filteredData = _.cloneDeep(data); // Show all data if 'all' is selected
+				filteredData = _.cloneDeep(data);
 			} else {
 				filteredData = _.cloneDeep(data.filter((item) => item.status === filter));
 			}
@@ -85,7 +83,6 @@
 	onMount(() => {
 		fetchLandingPads();
 	});
-	console.log('isList', isList);
 </script>
 
 <section class="min-h-screen w-full">
@@ -156,7 +153,9 @@
 
 			{#if landingPads.data && landingPads.data.length > 0}
 				<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
-					<MapView data={landingPads.data} />
+					{#if filteredData && filteredData.length > 0}
+						<MapView data={filteredData} />
+					{/if}
 					<Chart data={landingPads.data} />
 				</div>
 			{/if}

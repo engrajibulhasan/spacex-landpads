@@ -9,19 +9,17 @@
 >
 	<div class="col-span-6 min-h-4 md:col-span-7 lg:col-span-9">
 		<div class="filters mb-5 flex justify-between">
-			<AppSkeleton skClass="h-8 w-28 " />
-			<AppSkeleton skClass="h-8 w-48 " />
+			<AppSkeleton skClass="h-8 w-20 md:w-28 " />
+			<AppSkeleton skClass="h-8 w-20 md:w-48 " />
 		</div>
 		<div class="mt-5 w-full">
 			<LandingPadTr />
 			<LandingPadTr rCass="bg-white border-b border-gray-200 " />
 			<LandingPadTr rCass="bg-white border-b border-gray-200 " />
 			<LandingPadTr rCass="bg-white border-b border-gray-200 " />
-			<LandingPadTr rCass="bg-white border-b border-gray-200 " />
-			<LandingPadTr rCass="bg-white border-b border-gray-200 " />
 		</div>
 	</div>
-	<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
+	<div class="col-span-6 hidden space-y-6 md:col-span-5 md:block lg:col-span-3">
 		<Card class=" min-w-full p-4">
 			<AppSkeleton skClass="h-6 w-28 " />
 			<AppSkeleton skClass="h-[300px] w-full mt-4 " />

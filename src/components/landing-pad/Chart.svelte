@@ -4,14 +4,12 @@
 	import type { DataObjType } from '../../config/types';
 
 	export let data: DataObjType[] = [];
-	const attempt = data.reduce((total, pad) => total + pad.landing_attempts, 0);
-	const success = data.reduce((total, pad) => total + pad.landing_successes, 0);
+	const attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
+	const success = data.reduce((total, pad) => total + pad.successful_landings, 0);
 	const failed = attempt - success;
 	const fontFamily = 'Inter, sans-serif';
 
-	data.map((item) => console.log(item.landing_attempts));
-
-	console.log('Attempt,success,failed');
+	data.map((item) => console.log(item.attempted_landings));
 
 	const options: ApexOptions = {
 		series: [attempt, success, failed],
@@ -75,6 +73,6 @@
 </script>
 
 <Card class="w-full max-w-full p-0">
-	<h3 class="m-0 p-4 text-[16px] text-black">Success Rate Chart</h3>
+	<h3 class="m-0 p-4 text-[16px] font-semibold text-black">Success Rate Chart</h3>
 	<Chart {options} class="py-6" />
 </Card>

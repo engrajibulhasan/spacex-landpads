@@ -20,8 +20,6 @@
 	let isModalOpen = false;
 	let modalData: DataObjType | null = null;
 	const openModal = (clickedData: DataObjType) => {
-		console.log('clicked on ', clickedData);
-
 		isModalOpen = true;
 		modalData = clickedData;
 	};
@@ -48,12 +46,12 @@
 
 					<!-- Location Name -->
 					<TableBodyCell class="px-[21px]">
-						{pad.locality}
+						{pad.location.name}
 					</TableBodyCell>
 
 					<!-- Location Region -->
 					<TableBodyCell class="px-[21px]">
-						{pad.region}
+						{pad.location.region}
 					</TableBodyCell>
 
 					<!-- View Details Badge -->
@@ -65,7 +63,9 @@
 
 					<!-- Success Rate -->
 					<TableBodyCell class="px-[21px]">
-						<SuccessRate progress={makeNum((pad.landing_successes / pad.landing_attempts) * 100)} />
+						<SuccessRate
+							progress={makeNum((pad.successful_landings / pad.attempted_landings) * 100)}
+						/>
 					</TableBodyCell>
 
 					<!-- Wikipedia Link -->

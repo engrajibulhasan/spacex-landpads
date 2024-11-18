@@ -15,35 +15,37 @@
 		isModalOpen = true;
 		modalData = clickedData;
 	};
+
+	const progress = makeNum((data.successful_landings / data.attempted_landings) * 100);
 </script>
 
 <div>
-	<Card
-		img={data.images.large[0]}
-		href="/"
-		horizontal
-		size="none"
-		reverse={false}
-		imgClass="w-full md:w-1/3"
-	>
-		<h5 class=" flex items-center justify-between text-lg font-bold tracking-tight text-gray-900">
-			{data.full_name}
-			<Status status={data.status} />
-		</h5>
-		<h6 class="text-xs font-bold text-gray-700">{data.locality}, {data.region}</h6>
-		<div class="mb-8 mt-2 leading-7">
-			<SuccessRate
-				progress={makeNum((data.landing_successes / data.landing_attempts) * 100)}
-				text="Success Rate"
-			/>
+	<Card class="min-w-full">
+		<div class="flex items-center justify-start gap-x-5">
+			<Status status={data.status} size="md" />
+			<div class="w-full">
+				<h5
+					class=" flex items-center justify-between text-lg font-bold tracking-tight text-gray-900"
+				>
+					{data.full_name}
+				</h5>
+				<h6 class="mb-2 text-xs font-bold text-gray-700">
+					{data.location.name}, {data.location.region}
+				</h6>
+				<div class={progress ? `pb-6` : `pb-0`}>
+					<SuccessRate {progress} text="Success Rate" />
+				</div>
+			</div>
 		</div>
 
-		<p class="mb-3 text-sm font-normal leading-tight text-gray-500">
+		<p
+			class="my-4 w-full border-t border-gray-200 pt-3 text-sm font-normal leading-tight text-gray-500"
+		>
 			{data.details.slice(0, 100)}....
 		</p>
 		<div class="flex justify-start gap-x-2">
 			<Button
-				class="bg-gray-200 p-1 text-xs text-gray-900 transition-all  hover:bg-gray-900 hover:text-white "
+				class="bg-gray-200 p-1 px-3 text-xs text-gray-900 transition-all  hover:bg-gray-900 hover:text-white "
 				on:click={() => openModal(data)}><EyeOutline class="mr-1" /> Details</Button
 			>
 			<a
