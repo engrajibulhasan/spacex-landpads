@@ -45,11 +45,11 @@
 		</p>
 		<div class="flex justify-start gap-x-2">
 			<Button
-				class="bg-gray-200 p-1 px-3 text-xs text-gray-900 transition-all  hover:bg-gray-900 hover:text-white "
+				class="bg-gray-200 px-3  py-1 text-xs font-normal text-gray-900 transition-all  hover:bg-gray-900 hover:text-white "
 				on:click={() => openModal(data)}><EyeOutline class="mr-1" /> Details</Button
 			>
 			<a
-				class="flex items-center justify-center rounded-md bg-gray-200 p-1 px-3 text-xs text-gray-900 transition-all hover:bg-gray-900 hover:text-white"
+				class="flex items-center justify-center rounded-md bg-gray-200 p-1 px-3 text-xs font-normal text-gray-900 transition-all hover:bg-gray-900 hover:text-white"
 				href={data.wikipedia}
 				target="_blank"
 				rel="noopener noreferrer"
