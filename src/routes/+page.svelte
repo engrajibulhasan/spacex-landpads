@@ -3,6 +3,7 @@
 	import {
 		AdjustmentsVerticalOutline,
 		ChevronDownOutline,
+		ChevronUpOutline,
 		GridOutline,
 		ListOutline
 	} from 'flowbite-svelte-icons';
@@ -130,7 +131,11 @@
 						>
 							<AdjustmentsVerticalOutline class="mr-1" />
 							Filter By Status
-							<ChevronDownOutline class="ms-1 " />
+							{#if isDropdownOpen}
+								<ChevronUpOutline class="ms-1 " />
+							{:else}
+								<ChevronDownOutline class="ms-1 " />
+							{/if}
 						</Button>
 						<Dropdown bind:open={isDropdownOpen}>
 							{#each STATUS as item}
