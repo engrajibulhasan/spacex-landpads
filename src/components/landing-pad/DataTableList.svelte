@@ -48,12 +48,12 @@
 
 					<!-- Location Name -->
 					<TableBodyCell class="px-[21px]">
-						{pad.location.name}
+						{pad.locality}
 					</TableBodyCell>
 
 					<!-- Location Region -->
 					<TableBodyCell class="px-[21px]">
-						{pad.location.region}
+						{pad.region}
 					</TableBodyCell>
 
 					<!-- View Details Badge -->
@@ -65,9 +65,7 @@
 
 					<!-- Success Rate -->
 					<TableBodyCell class="px-[21px]">
-						<SuccessRate
-							progress={makeNum((pad.successful_landings / pad.attempted_landings) * 100)}
-						/>
+						<SuccessRate progress={makeNum((pad.landing_successes / pad.landing_attempts) * 100)} />
 					</TableBodyCell>
 
 					<!-- Wikipedia Link -->

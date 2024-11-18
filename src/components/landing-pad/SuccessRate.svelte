@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let progress: number = 0;
+	export let text: string | null = null;
 
 	const getColorClass = (progress: number) => {
 		if (progress > 70) {
@@ -18,7 +19,7 @@
 {#if progress > 0}
 	<div class="h-2 w-full rounded-full bg-gray-200">
 		<div class={`h-full ${colorClass} rounded-full`} style="width: {progress}%"></div>
-		<span class={spanClass}>{progress}%</span>
+		<span class={spanClass}>{text && text} {progress}%</span>
 	</div>
 {:else}
 	<span class={spanClass}>N/A</span>

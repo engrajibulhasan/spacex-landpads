@@ -4,10 +4,14 @@
 	import type { DataObjType } from '../../config/types';
 
 	export let data: DataObjType[] = [];
-	const attempt = data.reduce((total, pad) => total + pad.attempted_landings, 0);
-	const success = data.reduce((total, pad) => total + pad.successful_landings, 0);
+	const attempt = data.reduce((total, pad) => total + pad.landing_attempts, 0);
+	const success = data.reduce((total, pad) => total + pad.landing_successes, 0);
 	const failed = attempt - success;
 	const fontFamily = 'Inter, sans-serif';
+
+	data.map((item) => console.log(item.landing_attempts));
+
+	console.log('Attempt,success,failed');
 
 	const options: ApexOptions = {
 		series: [attempt, success, failed],
