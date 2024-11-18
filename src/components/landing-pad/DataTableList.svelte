@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		Button,
+		Card,
 		Table,
 		TableBody,
 		TableBodyCell,
@@ -25,7 +26,7 @@
 	};
 </script>
 
-<div class="w-full">
+<Card class="min-w-full border-none shadow-md ">
 	<Table>
 		<TableHead>
 			<TableHeadCell class="whitespace-nowrap px-[21px]">FULL NAME</TableHeadCell>
@@ -87,4 +88,4 @@
 	{#if modalData}
 		<DetailModal bind:open={isModalOpen} data={modalData} autoclose outsideclose />
 	{/if}
-</div>
+</Card>

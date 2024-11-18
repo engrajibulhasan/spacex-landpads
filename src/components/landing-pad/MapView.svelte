@@ -25,7 +25,6 @@
 			source: vectorSource
 		});
 
-		// Create the map
 		map = new Map({
 			target: 'map',
 			layers: [

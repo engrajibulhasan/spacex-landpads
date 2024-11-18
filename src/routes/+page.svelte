@@ -106,6 +106,7 @@
 		>
 			<div class="col-span-6 min-h-4 md:col-span-7 lg:col-span-9">
 				<div class="filters mb-5 flex justify-between">
+					<!-- List and Grid Button -->
 					<ButtonGroup>
 						<Button
 							outline
@@ -121,10 +122,14 @@
 						</Button>
 					</ButtonGroup>
 
+					<!-- Filter Dropdown  -->
 					<div>
-						<Button color="light" class={`${isDropdownOpen ? 'text-blue-500' : 'text-gray-700'}`}>
+						<Button
+							color="light"
+							class={`capitalize ${isDropdownOpen ? 'text-blue-500' : 'text-gray-700'}`}
+						>
 							<AdjustmentsVerticalOutline class="mr-1" />
-							Filter By Status {filter != 'all' ? `(${filter})` : ''}
+							Filter By Status
 							<ChevronDownOutline class="ms-1 " />
 						</Button>
 						<Dropdown bind:open={isDropdownOpen}>
@@ -141,21 +146,25 @@
 						</Dropdown>
 					</div>
 				</div>
+
 				{#if filteredData.length > 0}
 					{#if isList}
+						<!-- Data Table View  -->
 						<DataTableList data={filteredData} />
 					{:else}
+						<!-- Data Grid View  -->
 						<DataGrid data={filteredData} />
 					{/if}
 				{:else}
+					<!-- Not Found Error Message-->
 					<ErrorMessage message={`No ${filter != 'all' && filter} Data Found!`} />
 				{/if}
 			</div>
 
+			<!-- Map and Chart Right Sidebar -->
 			{#if filteredData && filteredData.length > 0}
 				<div class="col-span-6 space-y-6 md:col-span-5 lg:col-span-3">
 					<MapView data={filteredData} />
-
 					<Chart data={filteredData} />
 				</div>
 			{/if}
